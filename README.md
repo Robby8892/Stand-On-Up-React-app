@@ -2,8 +2,9 @@
 
 - User can watch videos that are either live or archived
 - User can access videos through search bar or home page nav 
+- On the nav a user can select between archived vidoes, current live videos, and see what is upcoming
 - User can register and login to make comments or start chats with other users
-- User can design their profile/ account page 
+- User can design their profile/ account page with a profile photo and info about them
 - User can now make comments on live videos, or archived videos 
 - When making comments on live videos, users can make the comments public or private
 - Public comments are comments that are live where anyone can make comments
