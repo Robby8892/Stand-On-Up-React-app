@@ -18,12 +18,12 @@ export default class App extends Component {
 	}
 
 	render(){
-		console.log(this.state.openChat);
+
   return (
     <div className="App">
     	<nav>
     		<ul>
-    			<a onClick={this.chantChatStatus} href='#' >Open chat</a>	
+    			<a onClick={this.chantChatStatus} href='#' >{this.state.openChat === false ? 'Open' : 'Close'} chat</a>	
     		</ul>
     	</nav>
       {this.state.openChat === false ?
