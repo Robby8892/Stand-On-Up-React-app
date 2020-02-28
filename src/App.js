@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import ChatContainer from './ChatContainer'
 import './App.css';
 import LiveStreamContainer from './LiveStreamContainer/root.js'
-
+import LoginRegister from './LoginRegister'
 
 export default class App extends Component {
 	constructor(){
 		super()
 
 		this.state = {
-			openChat: false 
+			openChat: false,
+      loggedIn: false,
+      loggedInUserId: '',
+      loggedInUserEmail: '' 
 		}
 	}
 
@@ -34,7 +37,13 @@ export default class App extends Component {
       	<ChatContainer/>
       }
 
-      <LiveStreamContainer/>
+      {this.state.loggedIn === false ?
+        null 
+        :
+        <LiveStreamContainer/>
+      }
+
+      <LoginRegister/>
     </div>
   );
 }
