@@ -12,23 +12,34 @@ export default class App extends Component {
 			openChat: false,
       loggedIn: false,
       loggedInUserId: '',
-      loggedInUserEmail: '' 
+      loggedInUserEmail: '',
+      status: 'register' 
 		}
 	}
 
-	chantChatStatus = () => {
+	changeChatStatus = () => {
 		this.setState({
 			openChat: !this.state.openChat
 		})
+
 	}
 
+
+  changeStatus = () => {
+
+    if(this.state.status === 'register') {
+    this.setState({status: 'login'})
+    } else {
+      this.setState({status: 'register'})
+    }
+  }
 	render(){
 
   return (
     <div className="App">
     	<nav>
     		<ul>
-    			<a onClick={this.chantChatStatus} href='#' >{this.state.openChat === false ? 'Open' : 'Close'} chat</a>	
+    			<a onClick={this.changeChatStatus} href='#' >{this.state.openChat === false ? 'Open' : 'Close'} chat</a>	
     		</ul>
     	</nav>
       {this.state.openChat === false ?
@@ -43,7 +54,10 @@ export default class App extends Component {
         <LiveStreamContainer/>
       }
 
-      <LoginRegister/>
+      <LoginRegister 
+      status={this.state.status}
+      changeStatus={this.changeStatus}
+      />
     </div>
   );
 }
