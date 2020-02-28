@@ -15,15 +15,15 @@ export default class Navbar extends Component {
 	}
 
 	componentDidMount() {
+
 		this.getLiveStreams()
 	}
 
 	getLiveStreams() {
+		
 		axios.get('http://127.0.0.1:' + config.rtmp_server.http.port + '/api/streams')
 		.then(res => {
 			let streams = res.data
-			console.log(res);
-			
 
 			if (typeof(streams['live'] != undefined)) {
 				this.getStreamInfo(streams['live'])
@@ -35,11 +35,13 @@ export default class Navbar extends Component {
 	}
 
 	getStreamInfo(live_streams) {
+		console.log('getStreamInfo >>>> ');
 		axios.get('http://localhost:3333/api/v1/streams/info', {
 			params: {
 				streams: live_streams
-			}
-		}).then(res => {
+			}})
+		.then(res => {
+			console.log(res, "-------------");
 			this.setState({
 				live_streams: res.data
 			}, () => {
@@ -49,31 +51,33 @@ export default class Navbar extends Component {
 	}
 
 	render(){
-		let streams = this.state.live_streams.map((stream, index)=>{
-			return (
-				<div className='stream col-xs-12 col-sm-12 col-md-3 col-lg-4' key={index}>
-					<span className='live-label'>Live</span>
-					<Link to={'/stream/' + stream.username}>
-						<div className='stream-thumbnail'>
-						<img src={'/thumbnails/' + stream.stream_key + '.png'}/>
-						</div>
-					</Link>
+		console.log("_______________state",this.state.live_streams);
+		// let streams = this.state.live_streams.map((stream, index)=>{
+		// 	return (
+		// 		<div className='stream col-xs-12 col-sm-12 col-md-3 col-lg-4' key={index}>
+		// 			<span className='live-label'>Live</span>
+		// 			<Link to={'/stream/' + stream.username}>
+		// 				<div className='stream-thumbnail'>
+		// 				<img src={'/thumbnails/' + stream.stream_key + '.png'}/>
+		// 				</div>
+		// 			</Link>
 
-					<span className='username'>
-						<Link to={'/stream/' + stream.username}>
-						{stream.username}
-						</Link>
-					</span>
-				</div>
-			)
-		})
+		// 			<span className='username'>
+		// 				<Link to={'/stream/' + stream.username}>
+		// 				{stream.username}
+		// 				</Link>
+		// 			</span>
+		// 		</div>
+		// 	)
+		// })
 		return(
 			<div className="container mt-5">
                 <h4>Live Streams</h4>
                 <hr className="my-4"/>
  
                 <div className="streams row">
-                    {streams}
+
+
                 </div>
             </div>
 		)

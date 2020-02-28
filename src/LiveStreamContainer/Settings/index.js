@@ -29,7 +29,7 @@ export default class Navbar extends Component {
 	getStreamKey() {
 		axios.get('http://localhost:3333/api/v1/settings/streamKey')
 			.then(res => {
-				console.log(res.data.steamKey);
+				console.log(res.data);
 				this.setState({
 					streamKey: res.data.streamKey
 				})
