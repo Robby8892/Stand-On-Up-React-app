@@ -6,21 +6,22 @@ export default class LoginRegister extends Component {
 		super(pros)
 
 		this.state = {
-			user: {
 				username: '', 
 				password: '',
 				email: '',
 				firstName: '',
 				lastName: ''
-			}
 		}
 	}
 
-	handleChange = (e) => {
-		console.log('Here is handleChange');
+	onChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
 	}
 
 	render(){
+		console.log(this.state);
 		return(
 			<Segment inverted>
 				<Form inverted>
@@ -29,31 +30,36 @@ export default class LoginRegister extends Component {
 						type='text' 
 						name='username' 
 						placeholder='Enter username'
-						value={this.state.username} 
+						value={this.state.username}
+						onChange={this.onChange} 
 						/>
 						<Form.Input 
 						type='password' 
 						name='password' 
 						placeholder='Enter password'
-						value={this.state.password} 
+						value={this.state.password}
+						onChange={this.onChange} 
 						/>
 						<Form.Input 
 						type='text' 
 						name='email'
 						placeholder='Enter email'
 						value={this.state.email}
+						onChange={this.onChange}
 						/>
 						<Form.Input 
 						type='text'
 						name='firstName' 
 						placeholder='Enter first name'
 						value={this.state.firstName}
+						onChange={this.onChange}
 						/>
 						<Form.Input 
 						type='text'
 						name='lastName' 
 						placeholder='Enter last name'
 						value={this.state.lastName}
+						onChange={this.onChange}
 						/>
 					</Form.Group>
 					<Button type='submit'>Register</Button>
