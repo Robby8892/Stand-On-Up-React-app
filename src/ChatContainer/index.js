@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import io from "socket.io-client";
 
-export default class ChatContainer extends React.Component{
+export default class ChatContainer extends Component{
     constructor(props){
         super(props);
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ChatContainer from './ChatContainer'
 import './App.css';
+import LiveStreamContainer from './LiveStreamContainer/root.js'
+
 
 export default class App extends Component {
 	constructor(){
@@ -31,6 +33,8 @@ export default class App extends Component {
       	:
       	<ChatContainer/>
       }
+
+      <LiveStreamContainer/>
     </div>
   );
 }
