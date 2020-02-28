@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './LiveStreams.scss'
-import config from '../../../../../Stand-On-Up-express-app/server/config/default.js'
+import config from '../../config/default'
 
 export default class NavBar extends Component {
 	constructor(props) {

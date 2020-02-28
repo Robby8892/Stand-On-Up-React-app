@@ -33,8 +33,6 @@ export default class App extends Component {
       	:
       	<ChatContainer/>
       }
-
-      <LiveStreamContainer/>
     </div>
   );
 }

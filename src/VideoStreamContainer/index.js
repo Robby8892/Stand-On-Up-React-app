@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 import 'bootstrap'
 require('./index.scss')
-import Root from './LiveStreamContainer/Root.js'
+import Root from '../LiveStreamContainer/Root.js'
 
 if(document.getElementById('root')) {
 	ReactDOM.render(
