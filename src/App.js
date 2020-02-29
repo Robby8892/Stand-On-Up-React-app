@@ -3,6 +3,7 @@ import ChatContainer from './ChatContainer'
 import './App.css';
 import LiveStreamContainer from './LiveStreamContainer/root.js'
 import LoginRegister from './LoginRegister'
+import axios from 'axios';
 
 export default class App extends Component {
 	constructor(){
@@ -23,6 +24,22 @@ export default class App extends Component {
 		})
 
 	}
+
+  registerUser = async (registerInfo) => {
+    try{
+    const registerResponse = await axios.post('http://localhost:3333/api/v1/auth/register', {
+      'data': registerInfo 
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+
+  }catch(err){
+    console.log(err);
+  }
+
+
+  }
 
 
   changeStatus = () => {
@@ -57,6 +74,7 @@ export default class App extends Component {
       <LoginRegister 
       status={this.state.status}
       changeStatus={this.changeStatus}
+      registerUser={this.registerUser}
       />
     </div>
   );

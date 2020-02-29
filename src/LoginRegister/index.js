@@ -21,7 +21,11 @@ export default class LoginRegister extends Component {
 	}
 
 	loginRegister = () => {
-
+		if(this.props.status === 'register') {
+			this.props.registerUser(this.state)
+		} else {
+			this.props.loginUser(this.this.state)
+		}
 	}
 
 	onSubmit = (e) => {
@@ -43,13 +47,23 @@ export default class LoginRegister extends Component {
 			{this.props.status === 'register' ? 'Register Here' : 'Login Here' }
 				<Form inverted onSubmit={this.onSubmit}>
 					<Form.Group widths='equal'>
+						{ this.props.status === 'register' ? <Form.Input 
+						type='text' 
+						name='username'
+						value={this.state.username}
+						onChange={this.onChange}
+						placeholder='Enter username' 
+						/>
+						:
 						<Form.Input 
 						type='text' 
 						name='username' 
-						placeholder='Enter username'
 						value={this.state.username}
 						onChange={this.onChange} 
+						placeholder='Enter username or email' 
 						/>
+
+						}
 						<Form.Input 
 						type='password' 
 						name='password' 
