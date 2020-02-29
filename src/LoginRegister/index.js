@@ -24,7 +24,7 @@ export default class LoginRegister extends Component {
 		if(this.props.status === 'register') {
 			this.props.registerUser(this.state)
 		} else {
-			this.props.loginUser(this.this.state)
+			this.props.loginUser(this.state)
 		}
 	}
 
@@ -107,7 +107,7 @@ export default class LoginRegister extends Component {
 						null
 						}
 					</Form.Group>
-					<Button type='submit'>Register</Button>
+					<Button type='submit'>{this.props.status === 'register' ? 'Register' : 'Login'}</Button>
 				</Form>
 				{this.props.status === 'register' ? 
 				<small>Already signed up? Click <span onClick={this.changeStatus} className='switch-form'>here</span>.</small>

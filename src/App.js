@@ -14,7 +14,7 @@ export default class App extends Component {
       loggedIn: false,
       loggedInUserId: '',
       loggedInUserEmail: '',
-      status: 'register',
+      status: 'login',
       message: '' 
 		}
 	}
@@ -52,6 +52,21 @@ export default class App extends Component {
 
   }
 
+  loginUser = async (loginInfo) => {
+    try {
+      console.log(loginInfo);
+      const loginResponse = await axios.post('http://localhost:3333/api/v1/auth/login', {
+        data: loginInfo
+      })
+      .then(res => {
+        console.log(res);
+      })
+
+    }catch(err){
+      console.log(err);
+    }
+  }
+
 
   changeStatus = () => {
 
@@ -87,6 +102,7 @@ export default class App extends Component {
       status={this.state.status}
       changeStatus={this.changeStatus}
       registerUser={this.registerUser}
+      loginUser={this.loginUser}
       />
     </div>
   );
