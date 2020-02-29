@@ -59,7 +59,16 @@ export default class App extends Component {
         data: loginInfo
       })
       .then(res => {
-        console.log(res);
+        console.log(res.data);
+        if(res.data.status === 200){
+          this.setState({
+            loggedIn: true,
+            loggedInUserId: res.data.userId,
+            loggedInUserEmail: res.data.email
+          })
+        } else {
+          this.setState({message: 'Invalid login credentials'})
+        }
       })
 
     }catch(err){
@@ -77,7 +86,7 @@ export default class App extends Component {
     }
   }
 	render(){
-
+    console.log(this.state);
   return (
     <div className="App">
       <p className='message'>{this.state.message}</p>
