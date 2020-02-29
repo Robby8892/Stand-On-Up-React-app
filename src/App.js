@@ -14,7 +14,8 @@ export default class App extends Component {
       loggedIn: false,
       loggedInUserId: '',
       loggedInUserEmail: '',
-      status: 'register' 
+      status: 'register',
+      message: '' 
 		}
 	}
 
@@ -31,11 +32,21 @@ export default class App extends Component {
       'data': registerInfo 
     })
     .then(res => {
-      console.log(res.data);
+
+      if(res.data.status === 201){
+        this.setState({
+          status: 'login'
+        })
+      } else {
+        this.setState({
+          message: 'Username or email is already taken'
+        })
+      }
     })
 
+
   }catch(err){
-    console.log(err);
+    console.log(err, 'error for registerUser__________');
   }
 
 
@@ -45,15 +56,16 @@ export default class App extends Component {
   changeStatus = () => {
 
     if(this.state.status === 'register') {
-    this.setState({status: 'login'})
+    this.setState({status: 'login', message: ''})
     } else {
-      this.setState({status: 'register'})
+      this.setState({status: 'register', message: ''})
     }
   }
 	render(){
 
   return (
     <div className="App">
+      <p className='message'>{this.state.message}</p>
     	<nav>
     		<ul>
     			<a onClick={this.changeChatStatus} href='#' >{this.state.openChat === false ? 'Open' : 'Close'} chat</a>	

@@ -6,3 +6,7 @@
 	text-decoration: red wavy underline;
 	cursor: grab;
 }
+
+.message {
+	color: red;
+}

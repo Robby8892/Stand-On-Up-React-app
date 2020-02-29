@@ -36,7 +36,13 @@ export default class LoginRegister extends Component {
 	}
 
 	changeStatus = () => {
-		console.log('hello');
+		this.setState({
+			username: '', 
+			password: '',
+			email: '',
+			firstName: '',
+			lastName: ''
+		})
 		this.props.changeStatus()
 	}
 
