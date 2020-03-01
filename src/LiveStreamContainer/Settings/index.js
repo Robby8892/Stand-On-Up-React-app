@@ -16,8 +16,10 @@ export default class Navbar extends Component {
 		this.getStreamKey()
 	}
 
-	generateStreamKey(e) {
-		axios.put('http://localhost:3333/api/v1/settings/streamKey')
+	generateStreamKey = async (e) => {
+	const updateStreamKeyRequest = await axios.put('http://localhost:3333/api/v1/settings/streamKey', {
+			data: this.props.loggedInUserEmail
+			})	
 			.then(res => {
 				console.log(res);
 				this.setState({
@@ -27,8 +29,11 @@ export default class Navbar extends Component {
 	}
 
 	getStreamKey() {
-		axios.get('http://localhost:3333/api/v1/settings/streamKey')
-			.then(res => {
+		axios.get('http://localhost:3333/api/v1/settings/streamKey', {
+			params: {
+				data: this.props.loggedInUserEmail
+			}}).
+			then(res => {
 				console.log(res.data);
 				this.setState({
 					streamKey: res.data.streamKey

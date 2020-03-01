@@ -11,6 +11,7 @@ const customHistory = require('history').createBrowserHistory()
 export default class Root extends Component {
 	constructor(props){
 		super(props)
+
 	}
 
 	render(){
@@ -18,7 +19,7 @@ export default class Root extends Component {
 			<Router history={customHistory}>
 
 				<div>
-					<Navbar/>
+					<Navbar />
 					<Route 
 					exact path='/' 
 					render={props => (
@@ -31,7 +32,7 @@ export default class Root extends Component {
                     	)}/>
 					 <Route 
 					 exact path='/settings' 
-					 render={props => (<Settings {...props}/>
+					 render={props => (<Settings {...props} loggedInUserEmail={this.props.loggedInUserEmail}/>
 					 	)}/>
 
 				</div>

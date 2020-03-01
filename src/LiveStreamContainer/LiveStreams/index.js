@@ -10,14 +10,13 @@ export default class Navbar extends Component {
 		super(props)
 
 		this.state = {
-			live_streams: []
+			live_streams: [],
+			runStream: false
 		}
-	}
-
-	componentDidMount() {
 
 		this.getLiveStreams()
 	}
+
 
 	getLiveStreams() {
 		
@@ -41,9 +40,9 @@ export default class Navbar extends Component {
 				streams: live_streams
 			}})
 		.then(res => {
-			console.log(res, "-------------");
 			this.setState({
-				live_streams: res.data
+				live_streams: res.data,
+				runStream: true
 			}, () => {
 				console.log(this.state);
 			})
@@ -51,33 +50,35 @@ export default class Navbar extends Component {
 	}
 
 	render(){
-		console.log("_______________state",this.state.live_streams);
-		// let streams = this.state.live_streams.map((stream, index)=>{
-		// 	return (
-		// 		<div className='stream col-xs-12 col-sm-12 col-md-3 col-lg-4' key={index}>
-		// 			<span className='live-label'>Live</span>
-		// 			<Link to={'/stream/' + stream.username}>
-		// 				<div className='stream-thumbnail'>
-		// 				<img src={'/thumbnails/' + stream.stream_key + '.png'}/>
-		// 				</div>
-		// 			</Link>
+		let streams = ''
+		console.log(this.state.live_streams.data);
+		if(this.state.runStream === true) {
+		streams = this.state.live_streams.data.map(({_id, username, streamKey })=>{
+			return (
+				<div className='stream col-xs-12 col-sm-12 col-md-3 col-lg-4' key={_id}>
+					<span className='live-label'>Live</span>
+					<Link to={'/stream/' + username}>
+						<div className='stream-thumbnail'>
+						<img src={'/thumbnails/' + streamKey + '.png'}/>
+						</div>
+					</Link>
 
-		// 			<span className='username'>
-		// 				<Link to={'/stream/' + stream.username}>
-		// 				{stream.username}
-		// 				</Link>
-		// 			</span>
-		// 		</div>
-		// 	)
-		// })
+					<span className='username'>
+						<Link to={'/stream/' + username}>
+						{username}
+						</Link>
+					</span>
+				</div>
+			)
+		})
+		}
 		return(
 			<div className="container mt-5">
                 <h4>Live Streams</h4>
                 <hr className="my-4"/>
  
                 <div className="streams row">
-
-
+                	{this.state.runStream === true ? streams : null}
                 </div>
             </div>
 		)

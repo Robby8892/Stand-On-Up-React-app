@@ -104,7 +104,9 @@ export default class App extends Component {
       {this.state.loggedIn === false ?
         null 
         :
-        <LiveStreamContainer/>
+        <LiveStreamContainer
+        loggedInUserEmail={this.state.loggedInUserEmail}
+        />
       }
 
       <LoginRegister 
