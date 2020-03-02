@@ -14,7 +14,8 @@ export default class VideoPlayer extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('/user', {
+		console.log(this.props.match.params.username);
+		axios.get('http://localhost:3333/api/v1/auth', {
 			params: {
 				username: this.props.match.params.username
 			}
@@ -25,7 +26,7 @@ export default class VideoPlayer extends Component {
 					autoplay: false,
 					controls: true,
 					sources: [{
-						src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/' + res.data.steam_key + '/index.m3u8',
+						src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/' + res.data.streamKey + '/index.m3u8',
 						type: 'application/x-mpegURL'
 					}],
 					fluid: true,
@@ -45,6 +46,8 @@ export default class VideoPlayer extends Component {
 	}
 
 	render(){
+
+
 		return(
 			<div className='row'>
 				<div className='col-xs-12 col-sm-12 col-md-10 col-lg-8 mx-auto mt-5'>

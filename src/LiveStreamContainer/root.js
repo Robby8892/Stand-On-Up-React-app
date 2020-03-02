@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { Router, Route } from 'react-router-dom'
 import Navbar from './Navbar/index.js'
 import LiveStreams from './LiveStreams'
@@ -15,6 +14,7 @@ export default class Root extends Component {
 	}
 
 	render(){
+
 		return(
 			<Router history={customHistory}>
 
@@ -32,7 +32,8 @@ export default class Root extends Component {
                     	)}/>
 					 <Route 
 					 exact path='/settings' 
-					 render={props => (<Settings {...props} loggedInUserEmail={this.props.loggedInUserEmail}/>
+					 render={props => (<Settings {...props} 
+					 	loggedInUserEmail={this.props.loggedInUserEmail}/>
 					 	)}/>
 
 				</div>
