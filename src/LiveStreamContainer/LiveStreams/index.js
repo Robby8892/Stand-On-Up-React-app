@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import '../LiveStreams.scss'
+import './LiveStreams.scss'
 import config from '../../config/default'
 
 

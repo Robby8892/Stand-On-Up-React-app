@@ -86,15 +86,12 @@ export default class App extends Component {
     }
   }
 	render(){
-    console.log(this.state);
+
+    
   return (
     <div className="App">
       <p className='message'>{this.state.message}</p>
-    	<nav>
-    		<ul>
-    			<a onClick={this.changeChatStatus} href='#' >{this.state.openChat === false ? 'Open' : 'Close'} chat</a>	
-    		</ul>
-    	</nav>
+
       {this.state.openChat === false ?
       	null 
       	:
@@ -109,12 +106,16 @@ export default class App extends Component {
         />
       }
 
-      <LoginRegister 
-      status={this.state.status}
-      changeStatus={this.changeStatus}
-      registerUser={this.registerUser}
-      loginUser={this.loginUser}
-      />
+      {this.state.loggedIn === false ? 
+        <LoginRegister 
+        status={this.state.status}
+        changeStatus={this.changeStatus}
+        registerUser={this.registerUser}
+        loginUser={this.loginUser}
+        />
+        :
+        null
+      }
     </div>
   );
 }

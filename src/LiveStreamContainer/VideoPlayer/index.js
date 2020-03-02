@@ -16,7 +16,7 @@ export default class VideoPlayer extends Component {
 	componentDidMount() {
 		axios.get('/user', {
 			params: {
-				username: this.pros.match.params.username
+				username: this.props.match.params.username
 			}
 		}).then(res => {
 			this.setState({
