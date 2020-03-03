@@ -17,7 +17,7 @@ export default class Navbar extends Component {
 	}
 
 	generateStreamKey = async (e) => {
-	const updateStreamKeyRequest = await axios.put(process.env.REACT_APP_API_URL + /settings/streamKey', {
+	const updateStreamKeyRequest = await axios.put(process.env.REACT_APP_API_URL + '/settings/streamKey', {
 			data: this.props.loggedInUserEmail
 			})	
 			.then(res => {
