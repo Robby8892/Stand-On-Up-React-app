@@ -3,7 +3,9 @@ import ChatContainer from './ChatContainer'
 import './App.css';
 import LiveStreamContainer from './LiveStreamContainer/root.js'
 import LoginRegister from './LoginRegister'
+import SearchContainer from './SearchContainer'
 import axios from 'axios';
+
 
 export default class App extends Component {
 	constructor(){
@@ -11,11 +13,12 @@ export default class App extends Component {
 
 		this.state = {
 			openChat: false,
+      videoMenu: false,
       loggedIn: false,
       loggedInUserId: '',
       loggedInUserEmail: '',
       status: 'login',
-      message: '' 
+      message: '',
 		}
 	}
 
@@ -54,7 +57,6 @@ export default class App extends Component {
 
   loginUser = async (loginInfo) => {
     try {
-      console.log(loginInfo);
       const loginResponse = await axios.post('http://localhost:3333/api/v1/auth/login', {
         data: loginInfo
       })
@@ -87,18 +89,22 @@ export default class App extends Component {
   }
 	render(){
 
-    
+
   return (
     <div className="App">
       <p className='message'>{this.state.message}</p>
-
-      {this.state.openChat === false ?
-      	null 
-      	:
-      	<ChatContainer/>
-      }
+     
 
       {this.state.loggedIn === false ?
+      	null 
+      	:
+      	<ChatContainer
+        loggedInUserId={this.state.loggedInUserId}
+        loggedInUserEmail={this.state.loggedInUserEmail}
+        />
+      }
+
+      {this.state.videoMenu === false ?
         null 
         :
         <LiveStreamContainer

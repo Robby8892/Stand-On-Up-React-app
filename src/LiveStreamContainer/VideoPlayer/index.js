@@ -3,6 +3,8 @@ import videojs from 'video.js'
 import axios from 'axios'
 import config from '../../config/default'
 
+console.log(config.rtmp_server.http.port);
+
 export default class VideoPlayer extends Component {
 	constructor(props){
 		super(props)
@@ -14,7 +16,7 @@ export default class VideoPlayer extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props.match.params.username);
+
 		axios.get('http://localhost:3333/api/v1/auth', {
 			params: {
 				username: this.props.match.params.username
@@ -26,7 +28,7 @@ export default class VideoPlayer extends Component {
 					autoplay: false,
 					controls: true,
 					sources: [{
-						src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/' + res.data.streamKey + '/index.m3u8',
+						src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/' + res.data.data[0].streamKey + '/index.m3u8',
 						type: 'application/x-mpegURL'
 					}],
 					fluid: true,
@@ -46,7 +48,7 @@ export default class VideoPlayer extends Component {
 	}
 
 	render(){
-
+		console.log(this.state);
 
 		return(
 			<div className='row'>
