@@ -13,6 +13,9 @@ export default class ChatContainer extends Component{
             public: Boolean
         };
 
+
+
+
         this.socket = io('localhost:8000');
 
         this.socket.on('RECEIVE_MESSAGE', (data) =>{
@@ -43,6 +46,29 @@ export default class ChatContainer extends Component{
 
         }
     }
+    componentDidMount() {
+        this.getAllMessages()
+        console.log('here is the comonentDidMount');
+    }
+
+
+    getAllMessages = async () => {
+
+        const getAllChatsResponse = await axios.get('http://localhost:3333/api/v1/chats').then(res => {
+
+            const messages = []
+            console.log(res.data.data);
+            res.data.data.forEach((chat) => {
+                console.log(chat.userOwner.username);
+            
+            this.socket.emit('SEND_MESSAGE', {
+                author: chat.userOwner.username,
+                message: chat.body
+            })
+          })        
+        })
+
+    }
 
     createMessage = async (chatInfo) => {
         const newChat = await axios.post('http://localhost:3333/api/v1/chats/new', {
@@ -61,7 +87,7 @@ export default class ChatContainer extends Component{
                         <div className="card">
                             <div className="card-body">
 
-                                <div className="card-title"> {this.state.public === true ? 'Global Chat' : 'Private Chat'}</div>
+                                <div className="card-title">Global Chat</div>
                                 <hr/>
                                 <div className="messages">
                                     {this.state.messages.map((message, index) => {
