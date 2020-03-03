@@ -61,12 +61,12 @@ export default class App extends Component {
         data: loginInfo
       })
       .then(res => {
-        console.log(res.data);
         if(res.data.status === 200){
           this.setState({
             loggedIn: true,
             loggedInUserId: res.data.userId,
-            loggedInUserEmail: res.data.email
+            loggedInUserEmail: res.data.email,
+            videoMenu: true
           })
         } else {
           this.setState({message: 'Invalid login credentials'})
@@ -87,15 +87,23 @@ export default class App extends Component {
       this.setState({status: 'register', message: ''})
     }
   }
+
+  globalChat = () => {
+    this.setState({openChat: !this.state.openChat})
+  }
+
 	render(){
 
 
   return (
     <div className="App">
       <p className='message'>{this.state.message}</p>
-     
+      {this.state.loggedIn === false ? 
+        null :
+        <a onClick={this.globalChat} href='#'>{this.state.openChat === false ? 'Open Chat' : 'Close Chat'}</a>    
+      }
 
-      {this.state.loggedIn === false ?
+      {this.state.openChat === false ?
       	null 
       	:
       	<ChatContainer

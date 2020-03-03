@@ -3,7 +3,7 @@ import videojs from 'video.js'
 import axios from 'axios'
 import config from '../../config/default'
 
-console.log(config.rtmp_server.http.port);
+console.log(videojs);
 
 export default class VideoPlayer extends Component {
 	constructor(props){
@@ -35,7 +35,7 @@ export default class VideoPlayer extends Component {
 				}
 			}, () => {
 				this.player = videojs(this.videoNode, this.state.videoJsOptions, function onPlayerReady() {
-					console.log('onPlayerReady', this);
+					console.log('onPlayerReady_________', this);
 				})
 			})
 		})
@@ -43,12 +43,13 @@ export default class VideoPlayer extends Component {
 
 	componentWillUnmount() {
 		if(this.player) {
+			
 			this.player.dispose()
 		}
 	}
 
 	render(){
-		console.log(this.state);
+		console.log('here is state on video player ________', this.state);
 
 		return(
 			<div className='row'>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import io from "socket.io-client";
+import './index.css'
 
 export default class ChatContainer extends Component{
     constructor(props){
@@ -23,7 +24,7 @@ export default class ChatContainer extends Component{
         });
 
         const addMessage = data => {
-            console.log(data);
+           
             this.setState({messages: [...this.state.messages, data]});
 
         };
@@ -48,7 +49,7 @@ export default class ChatContainer extends Component{
     }
     componentDidMount() {
         this.getAllMessages()
-        console.log('here is the comonentDidMount');
+
     }
 
 
@@ -56,10 +57,7 @@ export default class ChatContainer extends Component{
 
         const getAllChatsResponse = await axios.get('http://localhost:3333/api/v1/chats').then(res => {
 
-            const messages = []
-            console.log(res.data.data);
             res.data.data.forEach((chat) => {
-                console.log(chat.userOwner.username);
             
             this.socket.emit('SEND_MESSAGE', {
                 author: chat.userOwner.username,
@@ -75,7 +73,7 @@ export default class ChatContainer extends Component{
             data: chatInfo
         })
         .then(res => {
-            console.log(res);
+
         })
     }
 
@@ -92,7 +90,7 @@ export default class ChatContainer extends Component{
                                 <div className="messages">
                                     {this.state.messages.map((message, index) => {
                                         return (
-                                            <div key={index}>{message.author}: {message.message}</div>
+                                            <div className='each-msg' key={index}>{message.author}: {message.message}</div>
                                         )
                                     })}
                                 </div>

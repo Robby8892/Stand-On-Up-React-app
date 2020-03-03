@@ -47,7 +47,7 @@ export default class LoginRegister extends Component {
 	}
 
 	render(){
-		console.log(this.state);
+
 		return(
 			<Segment inverted>
 			{this.props.status === 'register' ? 'Register Here' : 'Login Here' }

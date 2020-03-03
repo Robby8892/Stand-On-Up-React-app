@@ -21,7 +21,6 @@ export default class Navbar extends Component {
 			data: this.props.loggedInUserEmail
 			})	
 			.then(res => {
-				console.log(res);
 				this.setState({
 					streamKey: res.data.streamKey
 				})
@@ -34,7 +33,6 @@ export default class Navbar extends Component {
 				data: this.props.loggedInUserEmail
 			}}).
 			then(res => {
-				console.log(res.data);
 				this.setState({
 					streamKey: res.data.streamKey
 				})
@@ -42,7 +40,6 @@ export default class Navbar extends Component {
 	}
 
 	render(){
-		console.log(this.state);
 		return(
 			<React.Fragment>
 				<div className='container mt-5'>
