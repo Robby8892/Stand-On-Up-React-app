@@ -36,7 +36,7 @@ export default class Navbar extends Component {
 	}
 
 	getStreamInfo(live_streams) {
-		axios.get('http://localhost:3333/api/v1/streams/info', {
+		axios.get(process.env.REACT_APP_API_URL + '/streams/info', {
 			params: {
 				streams: live_streams
 			}})

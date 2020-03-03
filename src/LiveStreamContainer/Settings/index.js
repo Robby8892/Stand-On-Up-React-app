@@ -17,7 +17,7 @@ export default class Navbar extends Component {
 	}
 
 	generateStreamKey = async (e) => {
-	const updateStreamKeyRequest = await axios.put('http://localhost:3333/api/v1/settings/streamKey', {
+	const updateStreamKeyRequest = await axios.put(process.env.REACT_APP_API_URL + /settings/streamKey', {
 			data: this.props.loggedInUserEmail
 			})	
 			.then(res => {
@@ -28,7 +28,7 @@ export default class Navbar extends Component {
 	}
 
 	getStreamKey() {
-		axios.get('http://localhost:3333/api/v1/settings/streamKey', {
+		axios.get(process.env.REACT_APP_API_URL + '/settings/streamKey', {
 			params: {
 				data: this.props.loggedInUserEmail
 			}}).

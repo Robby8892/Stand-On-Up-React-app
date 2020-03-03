@@ -57,7 +57,7 @@ export default class ChatContainer extends Component{
 
     getAllMessages = async () => {
 
-        const getAllChatsResponse = await axios.get('http://localhost:3333/api/v1/chats').then(res => {
+        const getAllChatsResponse = await axios.get(process.env.REACT_APP_API_URL + '/chats').then(res => {
             console.log(res.data.data);    
             res.data.data.forEach((chat) => {
             
@@ -72,7 +72,7 @@ export default class ChatContainer extends Component{
     }
 
     createMessage = async (chatInfo) => {
-        const newChat = await axios.post('http://localhost:3333/api/v1/chats/new', {
+        const newChat = await axios.post(process.env.REACT_APP_API_URL + '/chats/new', {
             data: chatInfo
         })
         .then(res => {

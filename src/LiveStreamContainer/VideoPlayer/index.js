@@ -17,7 +17,7 @@ export default class VideoPlayer extends Component {
 
 	componentDidMount() {
 
-		axios.get('http://localhost:3333/api/v1/auth', {
+		axios.get(process.env.REACT_APP_API_URL + '/auth', {
 			params: {
 				username: this.props.match.params.username
 			}
