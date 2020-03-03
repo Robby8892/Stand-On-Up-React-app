@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import io from "socket.io-client";
 import './index.css'
+const moment = require('moment')
 
 export default class ChatContainer extends Component{
     constructor(props){
@@ -10,6 +11,7 @@ export default class ChatContainer extends Component{
         this.state = {
             username: '',
             message: '',
+            createOn: '',
             messages: [],
             public: Boolean
         };
@@ -32,7 +34,7 @@ export default class ChatContainer extends Component{
         this.sendMessage = ev => {
             ev.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
-                author: this.props.loggedInUserEmail,
+                username: this.props.loggedInUserEmail,
                 message: this.state.message
             })
 
@@ -56,12 +58,13 @@ export default class ChatContainer extends Component{
     getAllMessages = async () => {
 
         const getAllChatsResponse = await axios.get('http://localhost:3333/api/v1/chats').then(res => {
-
+            console.log(res.data.data);    
             res.data.data.forEach((chat) => {
             
             this.socket.emit('SEND_MESSAGE', {
-                author: chat.userOwner.username,
-                message: chat.body
+                username: chat.userOwner.username,
+                message: chat.body,
+                createdOn: chat.createdOn
             })
           })        
         })
@@ -90,7 +93,7 @@ export default class ChatContainer extends Component{
                                 <div className="messages">
                                     {this.state.messages.map((message, index) => {
                                         return (
-                                            <div className='each-msg' key={index}>{message.author}: {message.message}</div>
+                                            <div className='each-msg' key={index}>{message.username}: {message.message} - Posted on: {message.createdOn}{}</div>
                                         )
                                     })}
                                 </div>
