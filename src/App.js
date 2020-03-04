@@ -57,7 +57,7 @@ export default class App extends Component {
 
   loginUser = async (loginInfo) => {
     try {
-      const loginResponse = await axios.post(process.env.REACT_APP_API_URL + 'auth/login', {
+      const loginResponse = await axios.post(process.env.REACT_APP_API_URL + '/auth/login', {
         data: loginInfo
       })
       .then(res => {
