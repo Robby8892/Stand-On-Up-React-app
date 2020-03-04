@@ -11,7 +11,7 @@ export default class ChatContainer extends Component{
         this.state = {
             username: '',
             message: '',
-            createOn: '',
+            createdOn: '',
             messages: [],
             public: Boolean
         };
@@ -58,11 +58,11 @@ export default class ChatContainer extends Component{
     getAllMessages = async () => {
 
         const getAllChatsResponse = await axios.get(process.env.REACT_APP_API_URL + '/chats').then(res => {
-            console.log(res.data.data);    
+  
+            res.data.data = res.data.data.reverse()
             res.data.data.forEach((chat) => {
-            
             this.socket.emit('SEND_MESSAGE', {
-                username: chat.userOwner.username,
+                username: this.props.loggedInUserEmail,
                 message: chat.body,
                 createdOn: chat.createdOn
             })
