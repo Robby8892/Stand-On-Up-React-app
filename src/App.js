@@ -31,7 +31,7 @@ export default class App extends Component {
 
   registerUser = async (registerInfo) => {
     try{
-    const registerResponse = await axios.post('http://localhost:3333/api/v1/auth/register', {
+    const registerResponse = await axios.post(process.env.REACT_APP_API_URL + '/auth/register', {
       'data': registerInfo 
     })
     .then(res => {
@@ -57,7 +57,7 @@ export default class App extends Component {
 
   loginUser = async (loginInfo) => {
     try {
-      const loginResponse = await axios.post('http://localhost:3333/api/v1/auth/login', {
+      const loginResponse = await axios.post(process.env.REACT_APP_API_URL + 'auth/login', {
         data: loginInfo
       })
       .then(res => {
