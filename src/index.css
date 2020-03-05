@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: LightGoldenRodYellow;
+
 }
 
 code {
@@ -14,4 +16,8 @@ code {
 
 .word {
 	color: blue;
+}
+
+.about {
+	color: blue;	
 }

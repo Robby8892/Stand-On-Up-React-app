@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, Segment } from 'semantic-ui-react'
+import './index.scss'
 
 export default class LoginRegister extends Component {
 	constructor(pros){
@@ -51,14 +52,15 @@ export default class LoginRegister extends Component {
 		return(
 			<Segment inverted>
 			{this.props.status === 'register' ? 'Register Here' : 'Login Here' }
-				<Form inverted onSubmit={this.onSubmit}>
+				<Form className='log-reg-container' inverted onSubmit={this.onSubmit}>
 					<Form.Group widths='equal'>
 						{ this.props.status === 'register' ? <Form.Input 
 						type='text' 
 						name='username'
 						value={this.state.username}
 						onChange={this.onChange}
-						placeholder='Enter username' 
+						placeholder='Enter username'
+						required minLength='1' 
 						/>
 						:
 						<Form.Input 
@@ -66,7 +68,8 @@ export default class LoginRegister extends Component {
 						name='username' 
 						value={this.state.username}
 						onChange={this.onChange} 
-						placeholder='Enter username or email' 
+						placeholder='Enter username or email'
+						required minLength='1' 
 						/>
 
 						}
@@ -75,17 +78,19 @@ export default class LoginRegister extends Component {
 						name='password' 
 						placeholder='Enter password'
 						value={this.state.password}
-						onChange={this.onChange} 
+						onChange={this.onChange}
+						required minLength='8' 
 						/>
 						{this.props.status === 'register' ?
-						<Segment inverted> 
+						
 						<Form.Group widths='equal'>
 							<Form.Input 
-							type='text' 
+							type='email' 
 							name='email'
 							placeholder='Enter email'
 							value={this.state.email}
 							onChange={this.onChange}
+							required minLength='1'
 							/>
 							<Form.Input 
 							type='text'
@@ -93,6 +98,7 @@ export default class LoginRegister extends Component {
 							placeholder='Enter first name'
 							value={this.state.firstName}
 							onChange={this.onChange}
+							required minLength='1'
 							/>
 							<Form.Input 
 							type='text'
@@ -100,9 +106,10 @@ export default class LoginRegister extends Component {
 							placeholder='Enter last name'
 							value={this.state.lastName}
 							onChange={this.onChange}
+							required minLength='1'
 							/>
 						</Form.Group>
-						</Segment> 
+
 						: 
 						null
 						}

@@ -5,6 +5,8 @@ import LiveStreamContainer from './LiveStreamContainer/root.js'
 import LoginRegister from './LoginRegister'
 import SearchContainer from './SearchContainer'
 import axios from 'axios';
+import { Header, Segment } from 'semantic-ui-react'
+
 
 
 export default class App extends Component {
@@ -97,11 +99,19 @@ export default class App extends Component {
 
   return (
     <div className="App">
+     <Header as='h2' attached='top'>
+      Welcome to Stand-On-Up, the app!
+    </Header>
+    <Segment attached>
+        <span className='about'>About me</span>
+    </Segment>
       <p className='message'>{this.state.message}</p>
       {this.state.loggedIn === false ? 
         null :
-        <a onClick={this.globalChat} href='#'>{this.state.openChat === false ? 'Open Chat' : 'Close Chat'}</a>    
+        <a onClick={this.globalChat} href='#'>{this.state.openChat === false ? 'Open Global Chat' : 'Close Chat'}</a>    
       }
+
+    
 
       {this.state.openChat === false ?
       	null 

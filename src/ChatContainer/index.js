@@ -59,7 +59,7 @@ export default class ChatContainer extends Component{
 
         const getAllChatsResponse = await axios.get(process.env.REACT_APP_API_URL + '/chats').then(res => {
   
-            res.data.data = res.data.data.reverse()
+
             res.data.data.forEach((chat) => {
             this.socket.emit('SEND_MESSAGE', {
                 username: this.props.loggedInUserEmail,
@@ -81,6 +81,7 @@ export default class ChatContainer extends Component{
     }
 
     render(){
+        this.state.messages = this.state.messages.reverse()
         return (
             <div className="container">
                 <div className="row">
@@ -93,7 +94,7 @@ export default class ChatContainer extends Component{
                                 <div className="messages">
                                     {this.state.messages.map((message, index) => {
                                         return (
-                                            <div className='each-msg' key={index}>{message.username}: {message.message} - Posted on: {message.createdOn}{}</div>
+                                            <div className='each-msg' key={index}>{message.username}: {message.message}{}</div>
                                         )
                                     })}
                                 </div>
