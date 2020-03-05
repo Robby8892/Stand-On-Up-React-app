@@ -6,7 +6,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: LightGoldenRodYellow;
+}
 
+.myLogo {
+  height: 30em;
+  width: 30em;
+  position: relative;
+  right: 5em;
+  display: inline-block;
+}
+
+.mic {
+  height: 30em;
+  width: 30em;
+  position: relative;
+  left: 5em;
+  display: inline-block;
 }
 
 code {

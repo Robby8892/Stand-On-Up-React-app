@@ -9,6 +9,17 @@
     text-align:justify;
 }
 
+.container {
+	margin-top: 10px;
+	
+	display: inline-block;
+	
+}
+
 .each-msg {
 	padding:2px; 
+}
+
+#close-chat {
+	cursor: pointer;
 }

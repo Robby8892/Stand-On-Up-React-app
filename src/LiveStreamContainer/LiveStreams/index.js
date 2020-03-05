@@ -54,22 +54,23 @@ export default class Navbar extends Component {
 	createStreams = () => {
 		console.log('hello from createStreams');
 			let	streams = this.state.live_streams.data.map((stream, index)=>{
-			return (
-				<div className='stream col-xs-12 col-sm-12 col-md-3 col-lg-4' key={index}>
-					<span className='live-label'>Live</span>
-					<Link to={'/stream/' + stream.username}>
-						<div className='stream-thumbnail'>
-						<img src={'/thumbnails/' + stream.stream_key + '.png'}/>
-						</div>
-					</Link>
-
-					<span className='username'>
+				console.log('here is are my streams', stream);
+				return (				
+					<div className='stream col-xs-12 col-sm-12 col-md-3 col-lg-4' key={index}>
+						<span className='live-label'>Live</span>
 						<Link to={'/stream/' + stream.username}>
-						{stream.username}
+							<div className='stream-thumbnail'>
+							<img src={'/server/thumbnails/' + stream.streamKey + '.png'}/>
+							</div>
 						</Link>
-					</span>
-				</div>
-			)
+
+						<span className='username'>
+							<Link to={'/stream/' + stream.username}>
+							{stream.username}
+							</Link>
+						</span>
+					</div>
+				)
 		})
 			
 			return streams	
