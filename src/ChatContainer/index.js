@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import io from "socket.io-client";
-import './index.css'
+import './index.scss'
 const moment = require('moment')
 
 export default class ChatContainer extends Component{
@@ -81,7 +81,6 @@ export default class ChatContainer extends Component{
     }
 
     render(){
-        this.state.messages = this.state.messages.reverse()
         return (
             <div className='msg-container' className="container">
                 <div className="row">

@@ -3,9 +3,13 @@
 }
 
 
-.switch-form, .about {
+.switch-form{
 	text-decoration: red wavy underline;
 	cursor: grab;
+}
+
+.about {
+	cursor: grab;	
 }
 
 .message {

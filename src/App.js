@@ -119,16 +119,17 @@ export default class App extends Component {
       {this.state.loggedIn === false ? 'Welcome to Stand-On-Up, the app!' : `Logged in as ${this.state.loggedInUserEmail}`}
     </Header>
     <Segment attached>
+        {this.state.loggedIn === false ? 
+        null :
+        <button className="ui secondary button" onClick={this.globalChat}>{this.state.openChat === false ? 'Open Global Chat' : 'Close Chat'}</button>    
+        }
         {this.state.loggedIn === false && this.state.aboutOpen === false ? <span onClick={this.openAbout} className='about'>About me</span> : null}
         {this.state.loggedIn === false && this.state.aboutOpen === true ? <AboutContainer openAbout={this.openAbout}/> : null}
         {this.state.loggedIn === false && this.state.aboutOpen === false ? <p>Stand up comedy for where you stand.</p> : null}
     </Segment>
     {this.state.loggedIn === false ? <button onClick={this.openLogRegModal} className="btn btn-outline-success">Login</button> : null}
       <p className='message'>{this.state.message}</p>
-      {this.state.loggedIn === false ? 
-        null :
-        <a onClick={this.globalChat} href='#'>{this.state.openChat === false ? 'Open Global Chat' : 'Close Chat'}</a>    
-      }
+ 
 
 
       
