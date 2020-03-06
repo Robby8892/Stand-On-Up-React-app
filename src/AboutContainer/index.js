@@ -9,7 +9,7 @@ export default function AboutContainer(props) {
 			As a developer I seek to build and work on projects that 
 			challenege my knowledge and put me mind to work. Reasearch is 100%
 			the name of the game and I have built a live streaming stand up comedy app
-			with global chatting for any user that logs in and regiseters! 
+			with global chatting for any user that regiseters and logs in! 
 			</p>
 
 			<small>

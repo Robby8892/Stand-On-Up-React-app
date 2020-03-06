@@ -16,3 +16,13 @@
 	align-content: center;
 	animation: 3s linear 1s infinite running slidein;
 }
+
+@keyframe slide {
+	from {
+	margin-left: 40px;
+	}
+
+	to {
+		margin-right: 40px;
+	}
+}

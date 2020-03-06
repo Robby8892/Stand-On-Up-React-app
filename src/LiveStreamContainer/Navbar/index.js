@@ -13,7 +13,7 @@ export default class Navbar extends React.Component {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
                     <Link to={'/'} className={'navbar-brand'}>
-                        NodeStream
+                        Live Streams
                     </Link>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item float-right">
