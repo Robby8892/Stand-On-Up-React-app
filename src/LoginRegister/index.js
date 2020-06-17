@@ -3,8 +3,8 @@ import { Form, Button, Label, Header, Modal, Segment } from 'semantic-ui-react'
 import './index.scss'
 
 export default class LoginRegister extends Component {
-	constructor(pros){
-		super(pros)
+	constructor(props){
+		super(props)
 
 		this.state = {
 				username: '', 

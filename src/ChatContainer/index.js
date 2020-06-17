@@ -58,11 +58,10 @@ export default class ChatContainer extends Component{
     getAllMessages = async () => {
 
         const getAllChatsResponse = await axios.get(process.env.REACT_APP_API_URL + '/chats').then(res => {
-  
-
-            res.data.data.forEach((chat) => {       
+            res.data.data.forEach((chat) => { 
+     
             this.socket.emit('SEND_MESSAGE', {
-                username: this.props.loggedInUserEmail,
+                username: chat.userOwner.username,
                 message: chat.body,
                 createdOn: chat.createdOn
             })
